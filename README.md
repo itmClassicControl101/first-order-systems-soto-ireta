@@ -72,7 +72,7 @@ now students must obtain a generic unit step response equation an **report it**.
 ## Example
 Try to use the obtained unit step response for the next system and compare the answer with the Scilab's response.
 
-![Figura](/Users/Marx/Dropbox/Docencia/Clases/2017/semester2/Control I/labSessions/session1/tankScheme.jpg)
+![Figura](tankScheme.jpg)
 
 considers that the tank is filled at a flow rate of $W_{i}$ ($m3/sec$), the input to the system.  The output is the discharge flowrate, $W_o$ in ($m3/sec$).  If $W_i= W_o$, the level, $h(t)$, remains constant.  If $W_i > W_o$, the level, $h$, rises.  If $W_i < W$, the level, $h$, falls.[1]
 
