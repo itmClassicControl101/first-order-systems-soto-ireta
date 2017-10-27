@@ -1,0 +1,329 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage[spanish]{babel}
+%\usepackage[backref=page]{hyperref}
+\usepackage[hidelinks]{hyperref} 
+\lstset{language=Scilab, breaklines=true, basicstyle=\footnotesize}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=2, numbersep=-8pt}
+
+\setcounter{secnumdepth}{0} 
+\setcounter{tocdepth}{1} 
+\newcounter{ns}
+\addtocounter{ns}{1} 
+\graphicspath{{figuras/}}
+
+\renewcommand{\figurename}{Figura}
+
+\begin{document}
+	
+	\begin{titlepage}
+		
+		\begin{center}
+			\vspace*{-1in}
+			\begin{figure}[htb]
+				\begin{center}
+					\includegraphics[width=8cm]{logo}
+				\end{center}
+			\end{figure}
+			
+		\begin{large}
+				Instituto Tecnologico de Morelia\\
+				"Jose Maria Morelos y Pavon"\\
+		\end{large}
+			\vspace*{0.15in}
+		\begin{large}
+			Departamento de Ingeniería Electrónica\\
+		\end{large}
+			\vspace*{0.4in}
+			
+			\begin{Large}
+				\textbf{Reporte de Practica No. 1} \\
+			\end{Large}
+			\vspace*{0.3in}
+			\begin{large}
+				M.C: Gerardo Marx Chavez-Campos.\\
+				Materia: Control 1.\\
+				Alumnos:\\
+				 		David Ireta Cazarez No. Ctrl. 13120127.\\
+						Edgar Soto Martinez No. Ctrl. 12121155.\\
+				Fecha: 27/10/2017\\
+			\end{large}
+			\rule{80mm}{0.1mm}\\
+			\vspace*{0.1in}
+		\end{center}
+		
+	\end{titlepage}
+
+%___________Termina Portada______________________________________________
+	
+
+	
+	\chapter*{}
+	\section{Introducción}
+	La función de tansferencia de un sistema de primer orden se caracteriza por tener el polinomio del denominador de primer grado. En funcion de como sea el numerador:\\
+	
+	1.- SISTEMA DE PRIMER ORDEN SIN CERO:\\
+	Tiene una constante como numerador.
+	
+	\begin{equation*}
+		G(s) = \frac{Y(s)}{U(s)}=\frac{K}{1+\tau s}
+	\end{equation*}
+	
+	Los parámetros que aparecen en la función de transferencia son la ganancia K, que coincide con la ganancia estática G(0), y la constante de tiempo $\tau$. La ganancia estática K puede tener cualquier signo, sin embargo para que este sistema sea estable se debe cumplir que $\tau>0$. \\
+	
+	2.- SISTEMA DE PRIMER ORDEN CON CERO NULO.
+	
+	\begin{equation*}
+		G(s) = \frac{Y(s)}{U(s)}=\frac{Ks}{1+\tau s}
+	\end{equation*}
+	
+	Los parámetros que aparecen en la funcion de transferencia son la ganancia K, que en este caso NO coincide con la ganancia estática G(0) que es igual a 0, y la constante de tiempo $\tau$. La ganancia K puede tener cualquier signo, mientras que $\tau$ debe ser positivo para que el sistema sea estable.\\
+	
+	3.- SISTEMA DE PRIMER ORDEN CON CERO NO NULO.
+	
+	\begin{equation*}
+		G(s) = \frac{Y(s)}{U(s)}=\frac{k(1+Ts)}{1+\tau s}
+	\end{equation*}
+	
+	En este último caso, los parámetros son la ganancia K, que vuelve a coincidir con la ganancia estática G(0) como en el sistema de primer sin cero, la constante de tiempo T asociada al cero y la constante de tiempo $\\tau$ asociada al polo o constante de tiempo del sistema. La ganancia K y la constante de tiempo T pueden tener cualquier signo, mientras que $\tau$ debe ser positivo para que el sistema sea estable.
+	
+	
+			
+		\chapter*{METODOLOGIA}
+	\section{ANALISIS DE UN SISTEMA DE PRIMER ORDEN}
+	
+	DESARROLLO TEORICO\\
+	
+	Tenemos el siguiente sistema hidráulico de entrada $W_i (t)$ y la salida $W_o (t)$ en la figura 1.
+	
+	
+
+	La ecuación diferencial que define este sistema es la siguiente de la cual depende de la altura (h(t)).
+	
+	\begin{equation*}
+		\omega_i(t)=A\frac{dh(t)}{d(t)}+R\frac{h(t)}{rg}
+	\end{equation*}
+	
+	Después proponemos el circuito eléctrico de corriente del sistema hidráulico y obtuvimos lo siquiente en la figura 2:
+	
+	
+	 
+	Entonces en la ecuación de nuestra analogia electrica es:
+	
+	\begin{equation*}
+		 \omega_i(t)=C\frac{dh(t)}{dt}+\frac{h(t)}{R}
+	\end{equation*}
+	
+	\begin{equation*}
+		Donde:	R=\frac{R}{rg}\quad y \quad C=A
+	\end{equation*}
+	
+	Usamos la Transformada de Laplace.
+	
+	\begin{equation*}
+		\omega_i(t)=CsH(s) + \frac{H(s)}{R}
+	\end{equation*}
+	
+	Factorizamos la ecuacion anterior.
+	
+	\begin{equation*}
+		\omega_i(s)=H(s) \left[Cs+\frac{1}{R}\right]
+	\end{equation*}
+	
+	Despejando H(s) y factorizando H(s) tenemos la función de transferencia.
+	
+	\begin{equation*}
+		\frac{H(s)}{\omega_i(s)}=\frac{\frac{1}{C}}{s+\frac{1}{RC}}
+	\end{equation*}
+	
+	La función de transferencia se puede expresar en su forma general.
+	
+	\begin{equation*}
+		G(s)=\frac{bs+c}{ds+a}
+	\end{equation*}
+	
+	\begin{equation*}
+	Donde:
+		a=\frac{1}{RC},\quad b=0,\quad c=\frac{1}{C},\quad d=1
+	\end{equation*}
+	
+	Sabemos que la respuesta del sistema es de la siguiente forma.
+	
+	\begin{equation*}
+		Y(s)=\frac{1}{s}\left(\frac{bs+c}{ds+a}\right)
+	\end{equation*}
+	
+	Una vez obtenido esto aplicamos fracciones parciales y la transformada inversa de Laplace obtenemos lo siguiente.
+	
+	\begin{equation*}
+		y(t)=\frac{c}{a}u_s(t)+\left(\frac{b}{a}-\frac{c}{a}\right)e^\frac{-at}{d}u_s(t)
+	\end{equation*}
+	
+	CODIGO\\
+	
+	Acontinuacion mostraremos el codigo para graficar la respuesta del sistema en el dominio del tiempo utlizando la ecuacion anterior.
+	
+	\begin{lstlisting}[frame=single]
+	function[y] = funcion(a,b,c,d)//se establece la salida y los parametros de a,b,c,d
+	t = 0:0.1:20 //vector de tiempo de 0 a 20 con incrementos de 0.1
+	y = (a/c)+(((b*c)-(a*d))/(d*c))*exp((-a*t)/d);//Respuesta del sistema en el tiempo
+	plot(t,y)//Funcion de graficacion
+	endfunction
+	\end{lstlisting}
+		
+	Para obtener los 3 casos mencionados en la practica se realizaron los siguientes calculos.\\
+	
+	CASO 1:\\
+	
+	$\omega_i(t) > \omega_o(t)$, tomamos la siguiente ecuación:
+	
+	\begin{equation*}
+		\omega_i(s)=H(s)\left[Cs+\frac{1}{R}\right]
+	\end{equation*}
+		
+	Donde tomamos $\omega_i(t)$ como entrada y $\frac{h(t)}{R}$ como salida, proponemos un valor de 2 para la entrada y 1 para la salida, obteniendo como resultado lo siguiente:
+	
+	\begin{equation*}
+		\omega_i(t)=CsH(s)+\frac{H(s)}{R}
+	\end{equation*}
+	
+	\begin{equation*}
+		2=x+1
+	\end{equation*}
+				
+	\begin{equation*}
+		x=1
+	\end{equation*}		
+	
+	Entonces en la ecuación siguiente:
+	
+	\begin{equation*}
+		G(s)=\frac{bs+c}{ds+a}
+	\end{equation*}
+	
+	\begin{equation*}
+		Donde:
+		a=\frac{1}{RC},\quad b=0,\quad c=\frac{1}{C},\quad d=1
+	\end{equation*}
+		
+	a es la salida y es igual a 1 (a=1), el valor del capacitor lo tomaria d=1, como no hay ninguna s multiplicando a b es igual a 0 (b=0) y c que es el otro numerador es igual a 1 (c=1).\\
+	
+	CASO 2\\
+	
+	$\omega_i(t) < \omega_o(t)$ proponemos el valor de 1 para la entrada 2 para la salida, quedando la ecuacion de la siguiente forma:
+	
+	\begin{equation*}
+		1=x+2
+	\end{equation*}
+	
+	\begin{equation*}
+		x=-1
+	\end{equation*}	
+	
+	Entonces en la ecuación siguiente:
+	
+	\begin{equation*}
+	G(s)=\frac{bs+c}{ds+a}
+	\end{equation*}
+	
+	\begin{equation*}
+	Donde:
+	a=\frac{1}{RC},\quad b=0,\quad c=\frac{1}{C},\quad d=1
+	\end{equation*}
+	
+	a será el valor de salida (a=2), el valor del capacitor lo toma d=1 y como no hay s mulitplicando a b por lo tanto b=0 y c=1.\\
+	
+	CASO 3\\
+	
+	$\omega_i(t) = \omega_o(t)$ se da el valor 1 a todos los coeficientes ya que de esta manera se evita la indeterminacion en la siguiente ecuacion:
+	
+	\begin{equation*}
+	y(t)=\frac{c}{a}u_s(t)+\left(\frac{b}{a}-\frac{c}{a}\right)e^\frac{-at}{d}u_s(t)
+	\end{equation*}
+	
+	\chapter*{RESULTADOS Y OBSERACIONES}
+	
+	Ahora mostraremos la respuesta al impulso del sistema para los casos indicados en la practica usando la funcion de transferencia desarrollada por nosotros como la funcion proporcionada por el profesor.\\
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=6cm]{Figura1}
+		\caption{Respues del sistema en $\omega_i > \omega_o$ en base a la funcion de transferencia del profesor}
+		\label{fig:figura7}
+	\end{figure}		
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=6cm]{Figura2}
+		\caption{Respues del sistema en $\omega_i < \omega_o$ en base a la funcion de transferencia del profesor}
+		\label{fig:figura7}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=6cm]{Figura3}
+		\caption{Respues del sistema en $\omega_i = \omega_o$ en base a la funcion de transferencia del profesor}
+		\label{fig:figura7}
+	\end{figure}
+	
+	Mostramos el codigo generado en Scilab para la función de transferencia proporcionada por el profesor.\\
+	
+	\begin{lstlisting}[frame=single]
+	s= %s
+	poly (0 , 's')
+	k = 1;
+	Tau = 1;
+	simpleSys=syslin('c', k/(1+Tau*s))
+	x=0:0.001:10;
+	y=csim('step', x, simpleSys)
+	plot(x,y)
+	\end{lstlisting}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=6cm]{Figura4}
+		\caption{Respues del sistema en $\omega_i > \omega_o$ en base a la funcion de transferencia del profesor}
+		\label{fig:figura7}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=6cm]{Figura6}
+		\caption{Respues del sistema en $\omega_i = \omega_o$ en base a la funcion de transferencia del profesor}
+		\label{fig:figura7}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=6cm]{Figura3}
+		\caption{Respues del sistema en $\omega_i = \omega_o$ en base a la funcion de transferencia del profesor}
+		\label{fig:figura7}
+	\end{figure}
+	
+	\chapter*{CONCLUSIONES Y OBSERVACIONES}
+
+	
+OBSERVACIONES\\
+
+	DAVID IRETA CAZAREZ\\
+Cuando simulamos el codigo en el programa de Scilab, observamos los comportamientos del sistema hidráulico de nuestra practica. Cuando la entrada es mayor a la salida pudimos observar el comportamiento del capacitor cuando esta en carga, asi mismo, cuando la salida es mayor a la entrada vimos la descarga analogica del capacitor y al ser iguales no la pudimos observar porque la respuesta es constante al ser iguales y nos da como resultado una linea recta.\\
+
+	EDGAR SOTO MARTINEZ\\
+Se verificó el funcionamiento del sistema porporcionado en la práctica y poder visualizar la respuesta del mismo dependiendo de los diferentes casos que se nos pedian y de esa manera poder entender el comportamiento y entender de una mejor manera el tema\\
+
+CONCLUSIONES\\
+
+	DAVID IRETA CAZAREZ.\\
+lo que pudimos observar fue que para obtener la respuesta d eun sistema de primer orden como la que hicimos en esta practica en cualquier sistema podra tener respues en el dominio del tiempo ya que es independiente de sus coeficientes.\\ 
+
+	EDGAR SOTO MARTINEZ\\
+Pudimos observar el comportamiento del sistema, fue complicada la práctica debido a que se esta comenzando a utilizar latex por lo cual se complico un poco mas el poder llevar a cabo el reporte.
+			
+\end{document}
