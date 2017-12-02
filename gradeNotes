@@ -1,0 +1,34 @@
+Check list for laboratory reports.
+
+Formato y forma:
+- [ ] Ortografia: Muchas faltas de ortografía 
+- [ ] Estilo
+- [x] Estructura
+- [ ] Originalidad: hay un plagio muy grande de http://www.cartagena99.com/recursos/alumnos/apuntes/Cap_5_SDx.pdf y no se hacen referencias
+- [ ] Imagens, Tablas y Referencias
+- [ ] Estilo de referencias
+
+Contenido:
+- [x] Introducción
+- [x] Metodología
+- [x] Desarrollo
+- [x] Simulación
+- [x] Resultados 
+- [x] Conclusiones
+
+Comparación de los resultados:
+- [x] Scilab y Ecuaciones 
+- [x] Respuesta al escalón
+- [x] Modos de operación del sistema Wo=Wi, Wo><Wi
+- [ ] Conclusiones: ambas las conclusiones y observasiones no incluyen información relevante como que tan exactas son las funciones, 
+o los casos de Wo y Wi, no se hace referencia a éstos, ni se argumenta los resultados.
+
+Repositorio:
+- [ ] Carpetas
+- [ ] Código Scilab
+- [x] Código de Latex
+- [x] Entregado en tiempo
+
+
+Grade= 66
+
