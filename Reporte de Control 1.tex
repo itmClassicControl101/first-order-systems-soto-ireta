@@ -96,16 +96,16 @@
 	
 	
 			
-		\chapter*{METODOLOGIA}
-	\section{ANALISIS DE UN SISTEMA DE PRIMER ORDEN}
+		\chapter*{METODOLOGÍA}
+	\section{ANÁLISIS DE UN SISTEMA DE PRIMER ORDEN}
 	
-	DESARROLLO TEORICO\\
+	DESARROLLO TEÓRICO\\
 	
 	Tenemos el siguiente sistema hidráulico de entrada $W_i (t)$ y la salida $W_o (t)$ en la figura 1.
 	
 	
 
-	La ecuación diferencial que define este sistema es la siguiente de la cual depende de la altura (h(t)).
+	La ecuación diferencial que define este sistema es la siguiente de la cual depende de la altura (h(t)). ???
 	
 	\begin{equation*}
 		\omega_i(t)=A\frac{dh(t)}{d(t)}+R\frac{h(t)}{rg}
@@ -168,7 +168,7 @@
 	
 	CODIGO\\
 	
-	Acontinuacion mostraremos el codigo para graficar la respuesta del sistema en el dominio del tiempo utlizando la ecuacion anterior.
+	Acontinuación mostraremos el código para graficar la respuesta del sistema en el dominio del tiempo utlizando la ecuación anterior.
 	
 	\begin{lstlisting}[frame=single]
 	function[y] = funcion(a,b,c,d)//se establece la salida y los parametros de a,b,c,d
@@ -178,7 +178,7 @@
 	endfunction
 	\end{lstlisting}
 		
-	Para obtener los 3 casos mencionados en la practica se realizaron los siguientes calculos.\\
+	Para obtener los 3 casos mencionados en la práctica se realizaron los siguientes cálculos.\\
 	
 	CASO 1:\\
 	
@@ -188,7 +188,7 @@
 		\omega_i(s)=H(s)\left[Cs+\frac{1}{R}\right]
 	\end{equation*}
 		
-	Donde tomamos $\omega_i(t)$ como entrada y $\frac{h(t)}{R}$ como salida, proponemos un valor de 2 para la entrada y 1 para la salida, obteniendo como resultado lo siguiente:
+	Dónde tomamos $\omega_i(t)$ como entrada y $\frac{h(t)}{R}$ como salida, proponemos un valor de 2 para la entrada y 1 para la salida, obteniendo como resultado lo siguiente:
 	
 	\begin{equation*}
 		\omega_i(t)=CsH(s)+\frac{H(s)}{R}
